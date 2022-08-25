@@ -1,4 +1,4 @@
 #!/usr/bin/python3
 if __name__ == "__main__":
-    from olumide_variable import b
+    from variable_load_5 import b
     print(b)
