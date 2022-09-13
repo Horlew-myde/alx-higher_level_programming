@@ -24,11 +24,11 @@ class Square:
         """
         return (self.__size ** 2)
 
-    def my_print(self, l):
+    def my_print(self):
         """prints a square  with the corresponding size
         """
         if (self.__size == 0):
             print('')
 
-        for l in range(self.__size):
+        for i in range(self.__size):
             print('#' * self.__size)
