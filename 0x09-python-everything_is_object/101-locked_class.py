@@ -18,4 +18,4 @@ class LockedClass():
     AttributeError: 'LockedClass' object has no attribute 'last_name'
     """
 
-    __slots__ = "first_name"i
+    __slots__ = "first_name"
