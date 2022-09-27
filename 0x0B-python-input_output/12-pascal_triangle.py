@@ -1,32 +1,36 @@
 #!/usr/bin/python3
-""" Module that defines the class Student
+"""
+This module defines a Pascal's Triangle function.
 """
 
 
-class Student:
-    """ Class to create student instances """
+def pascal_triangle(n):
+    """
+    Represent Pascal's Triangle of size n.
+Return:
+        empty list [] if n <= 0
+    if n is 8, we should expect:
+            [1]
+            [1, 1]
+            [1, 2, 1]
+            [1, 3, 3, 1]
+            [1, 4, 6, 4, 1]
+            [1, 5, 10, 10, 5, 1]
+            [1, 6, 15, 20, 15, 6, 1]
+            [1, 7, 21, 35, 35, 21, 7, 1]
+    """
+    if n <= 0:
+        return []
+        if n == 1:
+            return [[1]]
 
-    def __init__(self, first_name, last_name, age):
-        """ Special method to initialize """
-        self.first_name = first_name
-        self.last_name = last_name
-        self.age = age
-
-    def to_json(self, attrs=None):
-        """ Method that returns directory description """
-        obj = self.__dict__.copy()
-        if type(attrs) is list:
-
-            for item in attrs:
-                if type(item) is not str:
-                    return obj
-
-            d_list = {}
-
-            for iatr in range(len(attrs)):
-                for satr in obj:
-                    if attrs[iatr] == satr:
-                        d_list[satr] = obj[satr]
-            return d_list
-
+    triangle = [[1]]
+    while len(triangle) != n:
+        tri = triangle[-1]
+        tmp = [1]
+        for i in range(len(tri) - 1):
+            tmp.append(tri[i] + tri[i + 1])
+        tmp.append(1)
+        triangle.append(tmp)
+    return triangle
         return obj
