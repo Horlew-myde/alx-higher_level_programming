@@ -1,30 +1,21 @@
 #!/usr/bin/python3
-def pascal_triangle(n):
-    """ Function that returns the pascal triangle
+"""
+This module defines a text file insertion function.
+"""
 
+
+def append_after(filename="", search_string="", new_string=""):
+    """Insert text after each line containing a given string in a file.
     Args:
-        n: number of lines
-
-    Returns:
-        matrix: a matrix with the pascal triangle
-
+        filename (str): The name of the file.
+        search_string (str): The string to search for within the file.
+        new_string (str): The string to insert.
     """
-
-    matrix = []
-    prev = []
-
-    for i in range(n):
-        res_list = []
-        p1 = -1
-        p2 = 0
-        for j in range(len(prev) + 1):
-            if p1 == -1 or p2 == len(prev):
-                res_list += [1]
-            else:
-                res_list += [prev[p1] + prev[p2]]
-            p1 += 1
-            p2 += 1
-        matrix.append(res_list)
-        prev = res_list[:]
-
-    return matrix
+    text = ""
+    with open(filename) as r:
+        for line in r:
+            text += line
+            if search_string in line:
+                text += new_string
+    with open(filename, "w") as w:
+        w.write(text)
