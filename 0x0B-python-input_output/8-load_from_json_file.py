@@ -1,18 +1,12 @@
 #!/usr/bin/python3
-""" Module that creates an Object from a JSON file
 """
-import json
+This module defines a Python class-to-JSON function.
+"""
 
 
-def load_from_json_file(filename):
-    """ Function that creates an Object from a JSON file
-
-    Args:
-        filename: textfile name
-
-    Raises:
-        Exception: when the object can't be encoded
-
+def class_to_json(obj):
     """
-    with open(filename, 'r', encoding="utf-8") as f:
-        return json.load(f)
+    Return the dictionary represntation of a simple data structure.
+    """
+    return obj.__dict__
+Foot

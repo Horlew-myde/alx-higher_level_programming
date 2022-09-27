@@ -1,21 +1,27 @@
 #!/usr/bin/python3
-""" Module that writes an Object to a text file using
-a JSON representation
 """
-import json
+Module 7-add_item
+Contains function that adds and saves to Python obj to JSON file; loads objects
+# run with ./7-add_item.py
+#
+# cat add_item.json ; echo ""
+# expect output: []
+#
+# ./7-add_item.py some random args
+# cat add_item.json ; echo ""
+# expect output: ["some", "random", "args"]
+"""
 
 
-def save_to_json_file(my_obj, filename):
-    """ Function that writes an object to a text file
-    by a JSON representation
+from sys import argv
+save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
+load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
 
-    Args:
-        my_obj: object
-        filename: textfile name
+filename = "add_item.json"
 
-    Raises:
-        Exception: when the object can't be encoded
+try:
+    existing_content = load_from_json_file(filename)
+except FileNotFoundError:
+    existing_content = []
 
-    """
-    with open(filename, 'w', encoding="utf-8") as f:
-        json.dump(my_obj, f)
+save_to_json_file(existing_content + argv[1:], filename)

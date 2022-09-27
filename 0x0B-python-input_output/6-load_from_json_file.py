@@ -1,18 +1,15 @@
 #!/usr/bin/python3
-""" Module that contains a function that returns an object by
-a JSON representation
+"""
+This module defines a JSON file-reading function.
 """
 import json
 
 
-def from_json_string(my_str):
-    """ Function that returns an object by a JSON representation
-
-    Args:
-        my_str: JSON representation
-
-    Raises:
-        Exception: when the string can't be decoded
-
+def load_from_json_file(filename):
     """
-    return json.loads(my_str)
+    Create a Python object from a JSON file.
+    Args:
+        filename: file
+    """
+    with open(filename) as f:
+        return json.load(f)
