@@ -1,23 +1,30 @@
 #!/usr/bin/python3
-""" Module that executes a function that appends a line """
-
-
-def append_after(filename="", search_string="", new_string=""):
-    """ Function that appends a new line when a string is found
+def pascal_triangle(n):
+    """ Function that returns the pascal triangle
 
     Args:
-        filename: filename
-        search_string: string to search
-        new_string: string to append
+        n: number of lines
+
+    Returns:
+        matrix: a matrix with the pascal triangle
 
     """
 
-    res_line = []
-    with open(filename, 'r', encoding="utf-8") as f:
-        for line in f:
-            res_line += [line]
-            if line.find(search_string) != -1:
-                res_line += [new_string]
+    matrix = []
+    prev = []
 
-    with open(filename, 'w', encoding="utf-8") as f:
-        f.write("".join(res_line))
+    for i in range(n):
+        res_list = []
+        p1 = -1
+        p2 = 0
+        for j in range(len(prev) + 1):
+            if p1 == -1 or p2 == len(prev):
+                res_list += [1]
+            else:
+                res_list += [prev[p1] + prev[p2]]
+            p1 += 1
+            p2 += 1
+        matrix.append(res_list)
+        prev = res_list[:]
+
+    return matrix
