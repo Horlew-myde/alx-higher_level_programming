@@ -33,4 +33,3 @@ Return:
         tmp.append(1)
         triangle.append(tmp)
     return triangle
-        return obj
